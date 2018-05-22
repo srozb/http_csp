@@ -1,0 +1,4 @@
+[package]
+description = HTTP Content-Security-Policy report parser
+tags = CSP intel
+script_dir = scripts
