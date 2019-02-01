@@ -48,7 +48,7 @@ function parse_report(buf: string): csp_report
     r$referrer = extract_between(buf, /\"referrer\"\:\"/, /\"/);
     r$violated_directive = extract_between(buf, /\"violated-directive\"\:\"/, /\"/);
     r$original_policy = extract_between(buf, /\"original-policy\"\:\"/, /\"/);
-    $column_number = to_count(extract_between(buf, /\"column-number\":/, /,/));
+    r$column_number = to_count(extract_between(buf, /\"column-number\":/, /,/));
     r$line_number = to_count(extract_between(buf, /\"line-number\":/, /,/));
     r$blocked_uri = extract_between(buf, /\"blocked-uri\"\:\"/, /\"/);
     return r;
