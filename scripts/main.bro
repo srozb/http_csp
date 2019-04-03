@@ -16,8 +16,8 @@ export {
         referrer:                   string      &log &optional;
         violated_directive:         string      &log &optional;
         original_policy:            string      &optional;
-        column_number:              count       &log &optional;
-        line_number:                count       &log &optional;
+        column_number:              string      &log &optional;
+        line_number:                string      &log &optional;
         blocked_uri:                string      &log &optional;
     };
 
@@ -48,8 +48,8 @@ function parse_report(buf: string): csp_report
     r$referrer = extract_between(buf, /\"referrer\"\:\"/, /\"/);
     r$violated_directive = extract_between(buf, /\"violated-directive\"\:\"/, /\"/);
     r$original_policy = extract_between(buf, /\"original-policy\"\:\"/, /\"/);
-    r$column_number = to_count(extract_between(buf, /\"column-number\":/, /,/));
-    r$line_number = to_count(extract_between(buf, /\"line-number\":/, /,/));
+    r$column_number = extract_between(buf, /\"column-number\":/, /,/);
+    r$line_number = extract_between(buf, /\"line-number\":/, /,/);
     r$blocked_uri = extract_between(buf, /\"blocked-uri\"\:\"/, /\"/);
     return r;
 }
